@@ -11,7 +11,7 @@ public class Course {
   private int availableSeats;
   private String description;
   private Map<Integer, Student> enrolledStudents = new HashMap<>();
-  private boolean isCourseFull = this.availableSeats < enrolledStudents.size();
+  private boolean isCourseFull = this.availableSeats == 0;
   private String name;
   private String teacherName;
   private List<Student> waitingStudentsList = new LinkedList<>();
@@ -52,10 +52,11 @@ public class Course {
   }
 
   public void enrollStudent(Student newStudent) {
-    if (!this.isCourseFull) {
+    if (this.checkIfCourseIsFull()) {
       int studentId = newStudent.getId();
 
       this.enrolledStudents.put(studentId, newStudent);
+      this.availableSeats--;
     } else {
       this.waitingStudentsList.add(newStudent);
     }
@@ -65,5 +66,14 @@ public class Course {
     int studentId = currentStudent.getId();
 
     this.enrolledStudents.remove(studentId);
+
+    if (!this.waitingStudentsList.isEmpty()) {
+      Student studentFromQueue = this.waitingStudentsList.getFirst();
+
+      this.enrollStudent(studentFromQueue);
+      this.waitingStudentsList.removeFirst();
+    } else {
+      this.availableSeats++;
+    }
   }
 }
