@@ -1,7 +1,9 @@
 package courses;
 
+import staff.Teacher;
+
 public class MusicCourse extends Course {
-  public MusicCourse(String teacherName, int availableSeats) {
-    super("Music course for students", "Music course", teacherName, availableSeats);
+  public MusicCourse(Teacher courseTeacher, int availableSeats) {
+    super("Music course for students", "Music course", courseTeacher, availableSeats);
   }
 }

@@ -1,22 +1,31 @@
 package courses;
 
 import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
+
+import shared.Skills;
+import staff.Teacher;
 
 public class CourseTest {
   // given
   String description = "Test decription";
   String name = "Test name";
-  String teacherName = "John Doe";
   int availableSeats = 10;
+  private List<Skills> teacherSkills = new ArrayList<>();
 
-  private final Course testCourse = new Course(description, name, teacherName, 10);
+  private final Teacher testTeacher = new Teacher("Test teacher", 10, teacherSkills);
+  private final Course testCourse = new Course(description, name, testTeacher, 10);
 
   @Test
   public void testCourseConstructor() {
     assertEquals(name, testCourse.getName());
     assertEquals(description, testCourse.getDescription());
-    assertEquals(teacherName, testCourse.getTeacherName());
     assertEquals(10, testCourse.courseParticipatns.getAvailableSeats());
+    assertEquals("Test teacher", testCourse.courseTeacher.name);
+    assertEquals(1, testCourse.courseTeacher.id);
   }
 }
