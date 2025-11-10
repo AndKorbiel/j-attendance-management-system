@@ -28,6 +28,10 @@ public class Teacher {
     return this.skills;
   }
 
+  public void addHours(Double hoursToAdd) {
+    this.hoursPerWeek += hoursToAdd;
+  }
+
   public Double countMonthlySalary() {
     return hoursPerWeek * 4 * salary;
   }

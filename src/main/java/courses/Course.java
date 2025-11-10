@@ -4,20 +4,22 @@ import staff.Teacher;
 
 public class Course {
   private String description;
-  private Double hoursPerWeek;
+  private int hoursPerWeek;
   private String name;
-  public CourseParticipants courseParticipatns;
+  public CourseParticipants courseParticipants;
   public Teacher courseTeacher;
 
   public Course(
       String description,
       String name,
       Teacher courseTeacher,
-      int availableSeats) {
+      int availableSeats,
+      int hoursPerWeek) {
     this.description = description;
     this.name = name;
-    this.courseParticipatns = new CourseParticipants(availableSeats);
+    this.courseParticipants = new CourseParticipants(availableSeats);
     this.courseTeacher = courseTeacher;
+    this.hoursPerWeek = hoursPerWeek;
   }
 
   public String getDescription() {
@@ -28,7 +30,7 @@ public class Course {
     return this.name;
   }
 
-  public Double getHoursePerWeek() {
+  public int getHoursPerWeek() {
     return this.hoursPerWeek;
   }
 }
