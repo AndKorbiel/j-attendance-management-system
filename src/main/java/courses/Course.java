@@ -20,6 +20,8 @@ public class Course {
     this.courseParticipants = new CourseParticipants(availableSeats);
     this.courseTeacher = courseTeacher;
     this.hoursPerWeek = hoursPerWeek;
+
+    this.courseTeacher.addHours(Double.valueOf(hoursPerWeek));
   }
 
   public String getDescription() {
